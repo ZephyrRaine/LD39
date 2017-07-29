@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class UIDraggable : UIComponent, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler {
+public class UIDraggable : UIComponent, IBeginDragHandler, IEndDragHandler, IDragHandler {
 
     Vector2 _startPosition;
     Transform _parent;
@@ -16,6 +16,7 @@ public class UIDraggable : UIComponent, IBeginDragHandler, IEndDragHandler, IDra
         _parent = transform.parent;
         _siblingOrder = transform.GetSiblingIndex();
         transform.SetParent(_parent.parent);
+        eventData.selectedObject = gameObject;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -30,10 +31,5 @@ public class UIDraggable : UIComponent, IBeginDragHandler, IEndDragHandler, IDra
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        
     }
 }
