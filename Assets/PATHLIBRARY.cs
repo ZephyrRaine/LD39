@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PATHLIBRARY : MonoBehaviour {
 
-    static public string ACCESORIES_PATH = "Assets/Accessories/";
+    static public string PARTS_PATH = "Assets/Parts/";
 }
