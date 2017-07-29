@@ -1,14 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class UIDraggable : UIComponent, IBeginDragHandler, IEndDragHandler, IDragHandler {
+public class UIDraggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
 
     Vector2 _startPosition;
     Transform _parent;
     int _siblingOrder;
 
     GameObject _placeHolder;
+
+    bool _startedDragging;
+     Image _image;
+    void Start()
+    {
+        
+        _image = GetComponent<Image>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
