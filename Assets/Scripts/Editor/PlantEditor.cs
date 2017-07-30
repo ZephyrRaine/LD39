@@ -5,25 +5,11 @@ using UnityEngine.UI;
 using UnityEditor;
 using System;
 
-public class PlantEditor : EditorWindow
+static public class PlantEditorUtility
 {
-	[MenuItem("Window/Plant Editor")]
-	static void OpenWindow() 
-	{
-		PlantEditor mg = EditorWindow.GetWindow<PlantEditor>(true, "Plant Editor");
-        
-        mg.babyShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "BABY_MODEL.prefab");
-        mg.teenShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "TEEN_MODEL.prefab");
-        mg.adultShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "ADULT_MODEL.prefab");
-        mg.LoadAccesories();
-        mg.LoadShapes();
-        mg.LoadColors();
-        mg.Show();
-	}
-
-    private void LoadColors()
+    static public Dictionary<PART_CATEGORY, List<Color>> LoadColors()
     {
-        colorDico = new Dictionary<PART_CATEGORY, List<Color>>();
+        Dictionary<PART_CATEGORY, List<Color>> colorDico = new Dictionary<PART_CATEGORY, List<Color>>();
         for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
         {
             List<Color> colors = new List<Color>();
@@ -40,9 +26,84 @@ public class PlantEditor : EditorWindow
                 }
                 colorDico[((PART_CATEGORY)i)] = colors;
             }
-            
+
         }
+
+        return colorDico;
     }
+
+    static public List<Part> LoadParts()
+    {
+
+        List<Part> partsList = new List<Part>();
+
+        for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
+        {
+            string[] fold = new string[] { PATHLIBRARY.PARTS_PATH + ((PART_CATEGORY)i).ToString() };
+            string[] guids = AssetDatabase.FindAssets("t:Part", fold);
+            foreach (string guid in guids)
+            {
+                partsList.Add(AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(Part)) as Part);
+            }
+        }
+
+        return partsList;
+    }
+
+    static public Dictionary<PART_CATEGORY, List<Shape>> LoadShapes()
+	{
+        Dictionary<PART_CATEGORY, List<Shape>> shapesDico = new Dictionary<PART_CATEGORY, List<Shape>>();
+
+        
+        for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
+        {
+            List<Shape> list = new List<Shape>();
+            string[] fold = new string[] { PATHLIBRARY.SHAPES_PATH + ((PART_CATEGORY)i).ToString() };
+            string[] guids = AssetDatabase.FindAssets("t:Shape", fold);
+            foreach (string guid in guids)
+            {
+                list.Add(AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(Shape)) as Shape);
+            }
+            shapesDico[((PART_CATEGORY)i)] = list;
+        }
+
+        return shapesDico;
+    }
+
+    static public List<Shape> GetNonSortedShapesList()
+    {
+          Dictionary<PART_CATEGORY, List<Shape>> dico = PlantEditorUtility.LoadShapes();
+    List<Shape> shapesList = new List<Shape>();
+        foreach(KeyValuePair<PART_CATEGORY, List<Shape>> kvp in dico)
+        {
+            List<Shape> l = dico[kvp.Key];
+            shapesList.AddRange(l);
+        }
+
+        return shapesList;
+    }
+}
+
+public class PlantEditor : EditorWindow
+{
+	[MenuItem("Window/Plant Editor")]
+	static void OpenWindow() 
+	{
+		PlantEditor mg = EditorWindow.GetWindow<PlantEditor>(true, "Plant Editor");
+        
+        mg.babyShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "BABY_MODEL.prefab");
+        mg.teenShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "TEEN_MODEL.prefab");
+        mg.adultShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "ADULT_MODEL.prefab");
+        mg.partsList = PlantEditorUtility.LoadParts();
+
+        mg.shapesList = PlantEditorUtility.GetNonSortedShapesList();
+        mg.colorDico = PlantEditorUtility.LoadColors();
+        mg.Show();
+	}
+
+    
+
+    
 
     int currentTab = 0;
     List<Part> partsList;
@@ -104,24 +165,7 @@ public class PlantEditor : EditorWindow
         }
     }
 
-    void LoadAccesories()
-	{
-        if(partsList == null)
-        {
-            partsList = new List<Part>();
-        }
-
-        partsList.Clear();
-        for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
-        {
-            string[] fold = new string[]{ PATHLIBRARY.PARTS_PATH + ((PART_CATEGORY)i).ToString() };
-            string[] guids = AssetDatabase.FindAssets("t:Part", fold);
-            foreach (string guid in guids)
-            {
-                partsList.Add(AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(Part)) as Part);
-			}
-        }
-    }
+    
 
     private void OnGUIParts()
     {
@@ -143,28 +187,12 @@ public class PlantEditor : EditorWindow
             a.sprite = newSprite;
             AssetDatabase.CreateAsset(a, PATHLIBRARY.PARTS_PATH + newCat.ToString() + "/" + "PART_" + newCat.ToString() + "_" + newName + ".asset");
             AssetDatabase.SaveAssets();
-            LoadAccesories();
+            partsList = PlantEditorUtility.LoadParts();
         }
     }
 
     
-    void LoadShapes()
-	{
-        if(shapesList == null)
-        {
-            shapesList = new List<Shape>();
-        }
-        shapesList.Clear();
-        for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
-        {
-            string[] fold = new string[] { PATHLIBRARY.SHAPES_PATH + ((PART_CATEGORY)i).ToString() };
-            string[] guids = AssetDatabase.FindAssets("t:Shape", fold);
-            foreach (string guid in guids)
-            {
-                shapesList.Add(AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(Shape)) as Shape);
-            }
-        }
-    }
+    
 
     private void OnGUIShapes()
     {
@@ -213,7 +241,7 @@ public class PlantEditor : EditorWindow
             AssetDatabase.SaveAssets();
             DestroyImmediate(go);
             InstantiatePrefabOnPlant(a.go);
-            LoadShapes();
+            shapesList = PlantEditorUtility.GetNonSortedShapesList();
         }
     }
 

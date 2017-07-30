@@ -15,4 +15,10 @@ MonoBehaviour:
   - compileAutomatically: 0
     inkAsset: {fileID: 102900000, guid: 1460e815e969b43b8a83a7caa8b48c27, type: 3}
     jsonAsset: {fileID: 4900000, guid: 6cf48bb6d89824cc69e35b43f9a1aca6, type: 3}
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 1371b2141397d0946b627c19521a7fd6, type: 3}
+    jsonAsset: {fileID: 4900000, guid: 8665f5aaf28a6df4385f8d6db1004e58, type: 3}
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 3157ef0744d563042a78fb4bbc3a2624, type: 3}
+    jsonAsset: {fileID: 4900000, guid: 687b136ec5103b543924159fd673fd06, type: 3}
   compilationStack: []

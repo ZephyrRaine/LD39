@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class Mouth : MonoBehaviour {
 
+    public delegate void GameObjectDelegate(GameObject receiver);
+    public GameObjectDelegate ReceiverDelegate;
+
     public Sprite _default;
     public Sprite _nearby;
     // Use this for initialization

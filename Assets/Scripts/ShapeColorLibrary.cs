@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShapesLibrary : MonoBehaviour {
+public class ShapeColorLibrary : ScriptableObject {
 
-[SerializeField]
-    public List<TextAsset> _colorShapes;
+    public List<Color> _colorShapes;
     // Use this for initialization
 	
 }
