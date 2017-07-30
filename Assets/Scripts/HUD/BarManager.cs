@@ -34,7 +34,7 @@ public class BarManager : MonoBehaviour, IPointerExitHandler  {
     public void OnPointerExit(PointerEventData eventData)
     {
         GameObject rc = eventData.pointerCurrentRaycast.gameObject;
-        if(rc == null || rc.GetComponent<UIHoverable>() == null)
+        if(rc == null || !rc.transform.parent.name.EndsWith("Bar"))
 		{
          HideBar();
 		}
