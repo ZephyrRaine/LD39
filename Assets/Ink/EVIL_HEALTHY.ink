@@ -1,4 +1,4 @@
-->EVIL_HEALTHY.DEATH
+
 ===EVIL_HEALTHY===
 
 =RANDOM
@@ -19,7 +19,7 @@
 
 =DIRTY
 
-{|}
+Clear up some of this shit you disgusting animal.
 
 ->DONE
 
@@ -31,7 +31,7 @@
 
 =DARK
 
-{Leave me in the dark tonight as well, I like being given time to brood.|You're most kind to me, slave. Thank you for leaving me in the dark again.}
+{Thanks for leaving me in the dark last night. Do it again tonight, I like being given time to brood.|You're most kind to me, slave. Thank you for leaving me in the dark again.}
 
 ->DONE
 
@@ -43,25 +43,25 @@
 
 =COFFEE
 
-
+Hey buddy, give me more coffee that shit was amaaaaaazing.
 
 ->DONE
 
 =OVERWATER
 
-
+Ummm... mate... what's the deal here? Too much water.
 
 ->DONE
 
 =THANKS
 
-
+Thank you!
 
 ->DONE
 
 =UPSET
 
-
+Why have you forsaken me.
 
 ->DONE
 
