@@ -11,4 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38c059d16b978d4ba94d176052c988b, type: 3}
   m_Name: CACTUS_ShapesLibrary
   m_EditorClassIdentifier: 
-  _shapesLibrary: []
+  _shapesLibrary:
+  - {fileID: 11400000, guid: b9bd5fd10a0a6f848a4d2314839ff937, type: 2}
+  - {fileID: 11400000, guid: b10ac1edf337c9042aaaa400ca64e559, type: 2}
+  - {fileID: 11400000, guid: 111b3b7a8b54a4342bbfcd49929e9181, type: 2}
+  - {fileID: 11400000, guid: eccd7039ab97c3c46992803f6b4224f1, type: 2}
+  - {fileID: 11400000, guid: e9e78f07dfa1e2c45919c5feaa7ccd18, type: 2}
+  - {fileID: 11400000, guid: d3b2c9213b8c1004890bf2b94c1098c5, type: 2}
