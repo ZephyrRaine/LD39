@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693ad373b9ae37c4588ca76d92a041c2, type: 3}
   m_Name: CACTUS_ColorLibrary
   m_EditorClassIdentifier: 
-  _colorShapes: []
+  _colorShapes:
+  - {r: 1, g: 1, b: 1, a: 1}

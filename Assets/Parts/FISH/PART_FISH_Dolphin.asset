@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   naming: Dolphin
   category: 2
-  sprite: {fileID: 21300000, guid: ba8581298a5da4d4291b82c24582e2ff, type: 3}
+  sprite: {fileID: 21300000, guid: 6d793f5590f36f04b8beb5ac28f3a995, type: 3}

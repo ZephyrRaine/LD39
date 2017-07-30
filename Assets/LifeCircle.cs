@@ -21,7 +21,14 @@ public class LifeCircle : MonoBehaviour {
             Dictionary<PART_CATEGORY, int> pc = new Dictionary<PART_CATEGORY, int>();
 			foreach(Part p in selectedParts)
 			{
-                pc[p.category]++;
+                if(pc.ContainsKey(p.category))
+                {
+                    pc[p.category]++;
+                }
+                else
+                {
+                    pc.Add(p.category, 1);
+                }
             }
             PART_CATEGORY cat;
 			if(pc.Count > 2)
@@ -42,6 +49,8 @@ public class LifeCircle : MonoBehaviour {
 
             Shape[] s = RessourcesManager.RM.RequestShapes(cat);
             Color c = RessourcesManager.RM.RequestColor(cat);
+            GetComponent<Mouth>().ReceiverDelegate = GetWord;
+            GameManager.GM.Transitionning(s, c, selectedParts);
         }
         Destroy(go);
     }

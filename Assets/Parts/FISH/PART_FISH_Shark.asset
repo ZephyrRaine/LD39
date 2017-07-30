@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   naming: Shark
   category: 2
-  sprite: {fileID: 21300000, guid: 554bfdd9fdf8e874aa13a10ef201485c, type: 3}
+  sprite: {fileID: 21300000, guid: 62dada813a07d8347901a5ba8988ffd4, type: 3}

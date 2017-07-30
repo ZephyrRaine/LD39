@@ -14,3 +14,10 @@ MonoBehaviour:
   _shapesLibrary:
   - {fileID: 11400000, guid: c0a09e7846e11044a82e924a70c2d3fb, type: 2}
   - {fileID: 11400000, guid: 42eaf59b31e680347ac51eb23e3e817e, type: 2}
+  - {fileID: 11400000, guid: 85c281ccdf85ac542b52324dbaec98e4, type: 2}
+  - {fileID: 11400000, guid: 8c2e1791a2cea92478fd6f68e49c6766, type: 2}
+  - {fileID: 11400000, guid: 8e3da8160b22e43438fb0f6bd7cb8585, type: 2}
+  - {fileID: 11400000, guid: 1df3ac47d23555b49a69b0b37e51c6d6, type: 2}
+  - {fileID: 11400000, guid: 54bdc3667947d0e47a7b4dce40371711, type: 2}
+  - {fileID: 11400000, guid: 2a17ea34e2b6a2448807b5aa607c3e78, type: 2}
+  - {fileID: 11400000, guid: a24ec1062f788b345bae14497304c1e8, type: 2}

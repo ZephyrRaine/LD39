@@ -32,6 +32,8 @@ public class RessourcesManager : MonoBehaviour
         }
     }
 
+
+
     public void Awake()
     {
         _RM = this;

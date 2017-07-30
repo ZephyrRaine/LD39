@@ -149,12 +149,12 @@ public class PlantEditor : EditorWindow
             GameObject plant = InstantiatePrefabOnPlant(s.go, availableColors[UnityEngine.Random.Range(0, availableColors.Count)]);
            // Debug.Break();
             List<Part> listToPickFrom = new List<Part>(partsList);
-            List<Part> partsToDeliver = new List<Part>();
+            Part[] partsToDeliver = new Part[3];
             for (int i = 0; i < 3; i++)
             {
                 Part random = listToPickFrom[UnityEngine.Random.Range(0, listToPickFrom.Count)];
                 Debug.Log(random);
-                partsToDeliver.Add(random);
+                partsToDeliver[i] = (random);
                 listToPickFrom.Remove(random);
             }
             if (s.age == SHAPE_AGE.ADULT)
