@@ -17,8 +17,32 @@ public class PlantEditor : EditorWindow
         mg.adultShapeModel = AssetDatabase.LoadAssetAtPath<GameObject>(PATHLIBRARY.SHAPES_PATH + "ADULT_MODEL.prefab");
         mg.LoadAccesories();
         mg.LoadShapes();
+        mg.LoadColors();
         mg.Show();
 	}
+
+    private void LoadColors()
+    {
+        colorDico = new Dictionary<PART_CATEGORY, List<Color>>();
+        for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
+        {
+            List<Color> colors = new List<Color>();
+            TextAsset ta = AssetDatabase.LoadAssetAtPath<TextAsset>(PATHLIBRARY.SHAPES_PATH + ((PART_CATEGORY)i).ToString() + "/COLOURS.txt");
+            if (ta != null)
+            {
+                string[] colorsStr = ta.text.Split('-');
+                List<string> colorStrings = new List<string>(colorsStr);
+                foreach (string s in colorStrings)
+                {
+                    Color c = Color.white;
+                    ColorUtility.TryParseHtmlString(s, out c);
+                    colors.Add(c);
+                }
+                colorDico[((PART_CATEGORY)i)] = colors;
+            }
+            
+        }
+    }
 
     int currentTab = 0;
     List<Part> partsList;
@@ -33,10 +57,12 @@ public class PlantEditor : EditorWindow
     private GameObject adultShapeModel;
     private GameObject babyShapeModel;
 
+    private Dictionary<PART_CATEGORY, List<Color>> colorDico;
+
     void OnGUI()
     {
         EditorGUI.BeginChangeCheck();
-        currentTab = GUILayout.Toolbar(currentTab, new string[] { "Shapes", "Parts" });
+        currentTab = GUILayout.Toolbar(currentTab, new string[] { "Shapes", "Parts", "Creator" });
 
         switch(currentTab)
         {
@@ -46,6 +72,35 @@ public class PlantEditor : EditorWindow
             case 1:
                 OnGUIParts();
                 break;
+                case 2:
+                OnGUICreator();
+                break;
+        }
+    }
+
+    private void OnGUICreator()
+    {
+        if (GUILayout.Button("RANDOMIZE!!!"))
+        {
+            Shape s = shapesList[UnityEngine.Random.Range(0, shapesList.Count)];
+            Debug.Log(s.category);
+            List<Color> availableColors = colorDico[s.category];
+            GameObject plant = InstantiatePrefabOnPlant(s.go, availableColors[UnityEngine.Random.Range(0, availableColors.Count)]);
+           // Debug.Break();
+            List<Part> listToPickFrom = new List<Part>(partsList);
+            List<Part> partsToDeliver = new List<Part>();
+            for (int i = 0; i < 3; i++)
+            {
+                Part random = listToPickFrom[UnityEngine.Random.Range(0, listToPickFrom.Count)];
+                Debug.Log(random);
+                partsToDeliver.Add(random);
+                listToPickFrom.Remove(random);
+            }
+            if (s.age == SHAPE_AGE.ADULT)
+            {
+                ShapeReceiver sr = GameObject.FindGameObjectWithTag("Player").GetComponent<ShapeReceiver>();
+               sr.ImplementParts(partsToDeliver);
+            }
         }
     }
 
@@ -162,10 +217,23 @@ public class PlantEditor : EditorWindow
         }
     }
 
+    private GameObject InstantiatePrefabOnPlant(GameObject prefab, Color color)
+    {
+        GameObject go = InstantiatePrefabOnPlant(prefab);
+        go.GetComponent<Image>().color = color;
+        return go;
+    }
+
     private GameObject InstantiatePrefabOnPlant(GameObject prefab)
     {
+        GameObject pot = GameObject.FindGameObjectWithTag("Player");
+        if(pot.transform.childCount > 0)
+        {
+            DestroyImmediate(pot.transform.GetChild(0).gameObject);
+        }
         GameObject go = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-        go.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform, false);
+
+        go.transform.SetParent(pot.transform, false);
         return go;
     }
 }

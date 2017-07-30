@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Plant : MonoBehaviour {
+public class Mouth : MonoBehaviour {
 
-	[SerializeField]
-    Sprite _default;
-    [SerializeField]
-    Sprite _nearby;
+    public Sprite _default;
+    public Sprite _nearby;
     // Use this for initialization
     void Start () {
 		
