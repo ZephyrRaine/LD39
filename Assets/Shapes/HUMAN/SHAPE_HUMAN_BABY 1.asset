@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e77f0a6b05735440bd0cc857f6ccb12, type: 3}
+  m_Name: SHAPE_HUMAN_BABY 1
+  m_EditorClassIdentifier: 
+  category: 0
+  age: 0
+  go: {fileID: 1105921159928292, guid: c6a374ed6688c1442ad8b8c827cc94a2, type: 2}

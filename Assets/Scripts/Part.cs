@@ -14,7 +14,7 @@ public enum PART_CATEGORY
 	PART_COUNT
 }
 
-[CreateAssetMenu(fileName = "Part", menuName = "Plant", order = 1)]
+[CreateAssetMenu(fileName = "Part", menuName = "Plant/Part", order = 1)]
 public class Part : ScriptableObject 
 {
     public string naming;
