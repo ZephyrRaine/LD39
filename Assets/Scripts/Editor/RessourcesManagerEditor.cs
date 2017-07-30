@@ -59,11 +59,24 @@ public class RessourcesManagerEditor : Editor
                 slList.Add(sLib);
             }
         
-
+        
+            List<MouthLibrary> mlList = new List<MouthLibrary>();
+            Dictionary<PART_CATEGORY, List<MouthAsset>> dicoMouths = PlantEditorUtility.LoadMouths();
+            for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
+            {
+                MouthLibrary mLib = CreateInstance<MouthLibrary>();
+                mLib.mouthLibrary = new List<MouthAsset>();
+                if (dicoColor.ContainsKey((PART_CATEGORY)i))
+                {
+                    mLib.mouthLibrary = dicoMouths[(PART_CATEGORY)i];
+                }
+                AssetDatabase.CreateAsset(mLib, PATHLIBRARY.SHAPES_PATH + ((PART_CATEGORY)i).ToString() + "_MouthsLibrary.asset");
+                mlList.Add(mLib);
+            }
 
             AssetDatabase.SaveAssets();
 
-            sl.FeedLibraries(sclList, pl, slList);
+            sl.FeedLibraries(sclList, pl, slList, mlList);
             EditorUtility.SetDirty(sl);
         }
     }

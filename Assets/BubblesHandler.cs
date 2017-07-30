@@ -26,13 +26,8 @@ public enum DIALOGUE_TYPES
 
 public class BubblesHandler : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void DisplayBubble(DIALOGUE_TYPES type)
+	{
+        transform.GetChild((int)type).gameObject.SetActive(true);
+    }
 }

@@ -45,19 +45,22 @@ public class GameManager : MonoBehaviour {
     Color _color;
     Part[] _parts;
 
+    MouthAsset _mouth;
+
     ShapeReceiver _sr;
-    public void Transitionning(Shape[] shapes, Color color, Part[] parts)
+    public void Transitionning(Shape[] shapes, Color color, Part[] parts, MouthAsset mouth)
     {
         _shapes = shapes;
         _color = color;
         _parts = parts;
+        _mouth = mouth;
     }
 
 
 	public void FeedMe(ShapeReceiver sr)
 	{
         _sr = sr;
-        _sr.ReceiveShapes(_shapes, _color, _parts);
+        _sr.ReceiveShapes(_shapes, _color, _parts, _mouth);
 
     }
 

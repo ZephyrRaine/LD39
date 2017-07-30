@@ -24,6 +24,10 @@ public class RessourcesManager : MonoBehaviour
     }
 
     private static RessourcesManager _RM;
+    
+    [SerializeField]
+    private List<MouthLibrary> _mouthsLibrary;
+
     public static RessourcesManager RM
     {
         get
@@ -53,12 +57,12 @@ public class RessourcesManager : MonoBehaviour
         return null;
     }
 
-    public void FeedLibraries(List<ShapeColorLibrary> cLib, PartsLibrary pLib, List<ShapesLibrary> sLib)
+    public void FeedLibraries(List<ShapeColorLibrary> cLib, PartsLibrary pLib, List<ShapesLibrary> sLib, List<MouthLibrary> mLib)
     {
         _colorLibrary = cLib;
         _partsLibrary = pLib;
         _shapesLibrary = sLib;
-        
+        _mouthsLibrary = mLib;
     }
 
     public Color RequestColor(PART_CATEGORY pc)
@@ -66,6 +70,13 @@ public class RessourcesManager : MonoBehaviour
         List<Color> colours = _colorLibrary[(int)pc]._colorShapes;
         Color c = colours[UnityEngine.Random.Range(0, colours.Count)];
         return c;
+    }
+
+    public MouthAsset RequestMouth(PART_CATEGORY pc)
+    {
+        List<MouthAsset> mouths = _mouthsLibrary[(int)pc].mouthLibrary;
+        MouthAsset m = mouths[UnityEngine.Random.Range(0, mouths.Count)];
+        return m;
     }
 
 

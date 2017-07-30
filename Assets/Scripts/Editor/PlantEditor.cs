@@ -82,6 +82,38 @@ static public class PlantEditorUtility
 
         return shapesList;
     }
+
+     static public List<MouthAsset> GetNonSortedMouthsList()
+    {
+          Dictionary<PART_CATEGORY, List<MouthAsset>> dico = PlantEditorUtility.LoadMouths();
+    List<MouthAsset> mouthsList = new List<MouthAsset>();
+        foreach(KeyValuePair<PART_CATEGORY, List<MouthAsset>> kvp in dico)
+        {
+            List<MouthAsset> l = dico[kvp.Key];
+            mouthsList.AddRange(l);
+        }
+
+        return mouthsList;
+    }
+
+    static public Dictionary<PART_CATEGORY, List<MouthAsset>> LoadMouths()
+    {
+        Dictionary<PART_CATEGORY, List<MouthAsset>> mouthsDico = new Dictionary<PART_CATEGORY, List<MouthAsset>>();
+
+        for (int i = 0; i < (int)PART_CATEGORY.PART_COUNT; i++)
+        {
+            List<MouthAsset> list = new List<MouthAsset>();
+            string[] fold = new string[] { PATHLIBRARY.SHAPES_PATH + ((PART_CATEGORY)i).ToString() };
+            string[] guids = AssetDatabase.FindAssets("t:MouthAsset", fold);
+            foreach (string guid in guids)
+            {
+                list.Add(AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(guid), typeof(MouthAsset)) as MouthAsset);
+            }
+            mouthsDico[((PART_CATEGORY)i)] = list;
+        }   
+
+        return mouthsDico;
+    }
 }
 
 public class PlantEditor : EditorWindow
@@ -97,6 +129,7 @@ public class PlantEditor : EditorWindow
         mg.partsList = PlantEditorUtility.LoadParts();
 
         mg.shapesList = PlantEditorUtility.GetNonSortedShapesList();
+        mg.mouthsList = PlantEditorUtility.GetNonSortedMouthsList();
         mg.colorDico = PlantEditorUtility.LoadColors();
         mg.Show();
 	}
@@ -112,6 +145,7 @@ public class PlantEditor : EditorWindow
     string newName = "";
     PART_CATEGORY newCat = PART_CATEGORY.ANIMAL;
     private Sprite newSprite;
+    private Sprite newSprite2;
     private SHAPE_AGE newShape = SHAPE_AGE.BABY;
 
     private GameObject teenShapeModel;
@@ -119,11 +153,12 @@ public class PlantEditor : EditorWindow
     private GameObject babyShapeModel;
 
     private Dictionary<PART_CATEGORY, List<Color>> colorDico;
+    private List<MouthAsset> mouthsList;
 
     void OnGUI()
     {
         EditorGUI.BeginChangeCheck();
-        currentTab = GUILayout.Toolbar(currentTab, new string[] { "Shapes", "Parts", "Creator" });
+        currentTab = GUILayout.Toolbar(currentTab, new string[] { "Shapes", "Parts", "Mouths", "Creator" });
 
         switch(currentTab)
         {
@@ -134,8 +169,38 @@ public class PlantEditor : EditorWindow
                 OnGUIParts();
                 break;
                 case 2:
+                OnGUIMouths();
+                break;
+            case 3:
                 OnGUICreator();
                 break;
+        }
+    }
+
+    private void OnGUIMouths()
+    {
+        foreach (MouthAsset a in mouthsList)
+        {
+            Debug.Log(mouthsList.Count);
+            EditorGUILayout.LabelField(a.name);
+        }
+
+        EditorGUILayout.Separator();
+
+        newCat = (PART_CATEGORY) EditorGUILayout.EnumPopup("Mouth category : ", newCat);
+        newSprite2 = EditorGUILayout.ObjectField("Closed Sprite", newSprite2, typeof(Sprite), false) as Sprite;
+        newSprite = EditorGUILayout.ObjectField("Open Sprite", newSprite, typeof(Sprite), false) as Sprite;
+        if(GUILayout.Button("Add new"))
+		{
+            MouthAsset a = Part.CreateInstance<MouthAsset>();
+            a._open = newSprite;
+            a._closed = newSprite2;
+            
+            string pathToUse = PATHLIBRARY.SHAPES_PATH + newCat.ToString() + "/" + "MOUTH_" + newCat.ToString() + ".asset";
+            AssetDatabase.CreateAsset(a, AssetDatabase.GenerateUniqueAssetPath(pathToUse));
+            AssetDatabase.SaveAssets();
+  
+            mouthsList = PlantEditorUtility.GetNonSortedMouthsList();
         }
     }
 

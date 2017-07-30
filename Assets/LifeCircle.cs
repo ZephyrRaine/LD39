@@ -56,8 +56,9 @@ public class LifeCircle : MonoBehaviour {
 
             Shape[] s = RessourcesManager.RM.RequestShapes(cat);
             Color c = RessourcesManager.RM.RequestColor(cat);
-            GetComponent<Mouth>().ReceiverDelegate = GetWord;
-            GameManager.GM.Transitionning(s, c, selectedParts);
+            MouthAsset m = RessourcesManager.RM.RequestMouth(cat);
+            GetComponent<Mouth>().ReceiverDelegate -= GetWord;
+            GameManager.GM.Transitionning(s, c, selectedParts, m);
             endPanel.SetActive(true);
         }
         Destroy(go);
