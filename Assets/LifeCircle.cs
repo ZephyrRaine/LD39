@@ -6,6 +6,9 @@ public class LifeCircle : MonoBehaviour {
 
     Part[] selectedParts;
     int nb = 0;
+
+    [SerializeField]
+    GameObject endPanel;
     // Use this for initialization
     void Start () 
 	{
@@ -55,6 +58,7 @@ public class LifeCircle : MonoBehaviour {
             Color c = RessourcesManager.RM.RequestColor(cat);
             GetComponent<Mouth>().ReceiverDelegate = GetWord;
             GameManager.GM.Transitionning(s, c, selectedParts);
+            endPanel.SetActive(true);
         }
         Destroy(go);
     }

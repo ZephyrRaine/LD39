@@ -16,8 +16,7 @@ public enum DAYS
 
 public class DayText : MonoBehaviour 
 {
-
-    int _day = 0;
+    int _day = 1;
     TMP_Text _textComponent;
     public int _CurrentDay
 	{
