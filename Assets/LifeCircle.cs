@@ -35,7 +35,7 @@ public class LifeCircle : MonoBehaviour {
 			{
                 cat = pc.ElementAt(UnityEngine.Random.Range(0, pc.Count)).Key;
             }
-            else
+            else if(pc.Count > 1)
             {
 				if(pc.ElementAt(0).Value > pc.ElementAt(1).Value)
 				{
@@ -45,6 +45,10 @@ public class LifeCircle : MonoBehaviour {
 				{
                     cat = pc.ElementAt(1).Key;	
                 }
+            }
+            else
+            {
+                cat = pc.ElementAt(0).Key;
             }
 
             Shape[] s = RessourcesManager.RM.RequestShapes(cat);
