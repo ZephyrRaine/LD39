@@ -10,3 +10,37 @@
 
 =THIRSTY
 {~Excuse me, Mr Paul, could I have some water?|My soil is getting a bit dry, Mr Paul.}
+->DONE
+
+=DIRTY
+->DONE
+
+=PLAY
+->DONE
+
+=DARK
+->DONE
+
+=WHISKEY
+->DONE
+
+=COFFEE
+->DONE
+
+=OVERWATER
+->DONE
+
+=THANKS
+->DONE
+
+=UPSET
+->DONE
+
+=STORY1
+->DONE
+
+=STORY2
+->DONE
+
+=DEATH
+->DONE

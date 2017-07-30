@@ -21,4 +21,16 @@ MonoBehaviour:
   - compileAutomatically: 0
     inkAsset: {fileID: 102900000, guid: 3157ef0744d563042a78fb4bbc3a2624, type: 3}
     jsonAsset: {fileID: 4900000, guid: 687b136ec5103b543924159fd673fd06, type: 3}
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 4857ff562955f5748bf8ee0520575e43, type: 3}
+    jsonAsset: {fileID: 4900000, guid: b67f1158697c03f46bc85e228f49a88b, type: 3}
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 180f66286ffda1d49b65fd9550919f5b, type: 3}
+    jsonAsset: {fileID: 4900000, guid: ed19932bc31d158459d96b030c6148df, type: 3}
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 7ef8f5eedae1ebe47801b2022364b464, type: 3}
+    jsonAsset: {fileID: 4900000, guid: 25d7a76ba12c9634abafa1dcc0cb002b, type: 3}
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 390b1986ecc3dcf49954f6889a888363, type: 3}
+    jsonAsset: {fileID: 4900000, guid: 735d3cf235db8744d86340b650d3a2eb, type: 3}
   compilationStack: []
