@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour {
         switch(day)
         {
 			case 1:
-                _sr.Evolve(SHAPE_AGE.BABY);
-                break;
+				SceneManager.LoadScene("scene");
+				break;
             case 2:
                 _sr.Evolve(SHAPE_AGE.TEEN);
                 break;
@@ -51,14 +51,14 @@ public class GameManager : MonoBehaviour {
         _shapes = shapes;
         _color = color;
         _parts = parts;
-        SceneManager.LoadScene("scene");
     }
 
 
 	public void FeedMe(ShapeReceiver sr)
 	{
         _sr = sr;
-        sr.ReceiveShapes(_shapes, _color, _parts);
+        _sr.ReceiveShapes(_shapes, _color, _parts);
+
     }
 
 	

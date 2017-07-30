@@ -45,8 +45,8 @@ public class ShapeReceiver : MonoBehaviour {
                 {
                     ImplementParts(parts);
                 }
+                plant.SetActive(false);
             }
-            plant.SetActive(false);
             _plants[i] = (plant);
 
         }
@@ -75,7 +75,7 @@ public class ShapeReceiver : MonoBehaviour {
     {
 		if(transform.childCount > 2)
 		{
-            Transform plant = transform.GetChild(3);
+            Transform plant = transform.GetChild(2);
             Debug.Log("plant Name " + plant.name);
             Transform partsParent = plant.transform.Find("Parts");
             Debug.Log("partsParent Name " + partsParent.name);
