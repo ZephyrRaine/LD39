@@ -75,6 +75,7 @@ public void ImplementMouth(Sprite open, Sprite closed, int index = 0)
             Transform partsParent = plant.transform.Find("Mouth");
             Debug.Log(partsParent);
             Mouth m = partsParent.GetComponentInChildren<Mouth>();
+            m.ReceiverDelegate += GetComponent<Plant>().ReceiveItem;
             m._default = closed;
             m._nearby = open;
             m.GetComponent<Image>().sprite = closed;

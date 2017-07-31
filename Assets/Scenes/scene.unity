@@ -305,7 +305,7 @@ Prefab:
     - target: {fileID: 224472884219956182, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224347545776444736, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
@@ -325,7 +325,7 @@ Prefab:
     - target: {fileID: 224347545776444736, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224614195864839850, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
@@ -345,7 +345,7 @@ Prefab:
     - target: {fileID: 224614195864839850, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -201.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224511205459044304, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
@@ -365,7 +365,7 @@ Prefab:
     - target: {fileID: 224511205459044304, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -201.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224522202384000206, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
@@ -385,7 +385,7 @@ Prefab:
     - target: {fileID: 224522202384000206, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -201.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114310997271241938, guid: b190b84975ee6894eb825ad0f7d3f433,
         type: 2}
@@ -436,6 +436,46 @@ Prefab:
     - target: {fileID: 1855149544070066, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092253819506472, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Fertiliser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862027697442378, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782247479582524, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Body part
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240724800599024, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Chocolate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167002370737030, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Medicine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580524838807466, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Coffee
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400749369540082, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: FOOD_Whiskey
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759969075025592, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: WATER_Can
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135293011748890, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: PLAY_Gameboy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186082264679670, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}
+      propertyPath: m_Name
+      value: PLAY_Football
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b190b84975ee6894eb825ad0f7d3f433, type: 2}

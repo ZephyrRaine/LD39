@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour {
         {
             _bh.DailyInit(_sr.GetComponent<Plant>().Evaluate());
         }
-        else
-        {
-            Debug.LogError("BH NULL");
-        }
-        
     }
 	void Awake()
 	{

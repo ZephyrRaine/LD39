@@ -48,6 +48,41 @@ public class Plant : MonoBehaviour {
         DailyReset();
     }
 	
+    public void ReceiveItem(GameObject go)
+    {
+        if(!check.fed)
+        {
+            if (go.name.StartsWith("FOOD_"))
+            {
+                check.fed = true;
+                if (go.name == "FOOD_Whiskey")
+                {
+                    check.whiskey = true;
+                }
+                else if (go.name == "FOOD_Coffee")
+                {
+                    check.coffee = true;
+                }
+            }
+        }
+
+        if(go.name.StartsWith("WATER_"))
+        {
+            if(!check.hydrated)
+            {
+                check.hydrated = true;
+            }
+            else
+            {
+                check.overwatered = true;
+            }
+        }
+
+        if(go.name.StartsWith("PLAY_"))
+        {
+            check.entertained = true;
+        }
+    }
 	// Update is called once per frame
 	public string[] Evaluate() 
 	{
@@ -73,6 +108,11 @@ public class Plant : MonoBehaviour {
             else if (check.whiskey)
             {
                 stitches[(int)DIALOGUE_TYPES.HUNGRY] = knot + ".WHISKEY";
+            }
+
+            if(!check.entertained)
+            {
+                stitches[(int)DIALOGUE_TYPES.PLAY] = knot + ".PLAY";
             }
 
             if (!check.hydrated)
