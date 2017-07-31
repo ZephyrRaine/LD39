@@ -9,11 +9,32 @@ public class LifeCircle : MonoBehaviour {
 
     [SerializeField]
     GameObject endPanel;
+
+    [SerializeField]
+    TextBox tb;
     // Use this for initialization
     void Start () 
 	{
         selectedParts = new Part[3];
         GetComponent<Mouth>().ReceiverDelegate += GetWord;
+        tb.transform.parent.gameObject.SetActive(true);
+        InkOverlord.IO.RequestKnot("MONDAY_MORNING");
+        if(InkOverlord.IO.canContinue)
+        {
+            tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
+        }
+    }
+
+    public void Proceed()
+    {
+        if(InkOverlord.IO.canContinue)
+        {
+            tb.ReadLine(0f,1f,InkOverlord.IO.NextLine());
+        }
+        else if(InkOverlord.IO.hasChoices)
+        {
+
+        }
     }
 
     void GetWord(GameObject go)
