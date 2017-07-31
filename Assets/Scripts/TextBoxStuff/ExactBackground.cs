@@ -10,7 +10,7 @@ public class ExactBackground : MonoBehaviour {
     void Start () 
 	{
         _mine = GetComponent<RectTransform>();
-        _theirs = transform.GetChild(0).GetComponent<RectTransform>();
+        _theirs = GetComponentInChildren<TextBox>().GetComponent<RectTransform>();
     }
 	
 	// Update is called once per frame

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     public void NewDay(int day)
     {
         nextDay = day;
+
         if(_fader == null)
         {
             _fader = GameObject.FindObjectOfType(typeof(Fader)) as Fader;
