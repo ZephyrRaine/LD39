@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LightCeiling : MonoBehaviour {
 
-    bool _status = false;
+    public bool _status = false;
     [SerializeField]
     Sprite _on;
     [SerializeField]

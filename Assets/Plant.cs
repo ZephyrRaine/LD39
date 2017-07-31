@@ -84,7 +84,7 @@ public class Plant : MonoBehaviour {
         }
     }
 	// Update is called once per frame
-	public string[] Evaluate() 
+	public string[] Evaluate(bool _cleaned, bool _darkness) 
 	{
 
         string knot = "EVIL_HEALTHY";
