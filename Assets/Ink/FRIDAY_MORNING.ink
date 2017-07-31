@@ -1,12 +1,12 @@
-===MONDAY_MORNING
+===FRIDAY_MORNING
 
-Here we go again. Monday.
+Here we go again. Time for the weekend!
 
 *You feel groggy.
 
 Ugh my teeth feel disgusting... I'm so tired.
 
-I reckon I might be able to get up a bit later next week. It's not like Cashbags Michael comes to check up on my much anymore.
+It's been a really heavy week. Maybe I should ask Cashbags Michael if I can have a bit of time off... Some time with my babies.
 
 *You feel enthusiastic.
 
