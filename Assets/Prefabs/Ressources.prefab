@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1925315780219658}
+  m_IsPrefabParent: 1
+--- !u!1 &1925315780219658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4700743501590132}
+  - component: {fileID: 114568881882377354}
+  m_Layer: 0
+  m_Name: Ressources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4700743501590132
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925315780219658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114568881882377354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925315780219658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d23d3dee144fc48a5fd35d0d091189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorLibrary:
+  - {fileID: 11400000, guid: 8e7fb3d2bf34daa46afdfa4649aa8d23, type: 2}
+  - {fileID: 11400000, guid: f43c69b92f76b2641be16dc03c108c24, type: 2}
+  - {fileID: 11400000, guid: ca791ec2ec176a64f821a7ca2323d6c7, type: 2}
+  - {fileID: 11400000, guid: be07fc74d63787641a881b1af97dea9b, type: 2}
+  - {fileID: 11400000, guid: edb7a749aec16f54cb0e6789d483b943, type: 2}
+  - {fileID: 11400000, guid: 72d72c7f5f27c3845b64cfd19d3735fb, type: 2}
+  _partsLibrary: {fileID: 11400000, guid: 1b9ae251b483f5746a305f569bb1175a, type: 2}
+  _shapesLibrary:
+  - {fileID: 11400000, guid: df5a9ef9e499ae643b708aad0d480bee, type: 2}
+  - {fileID: 11400000, guid: 188f10bdbae58884e906e5f403974f86, type: 2}
+  - {fileID: 11400000, guid: 2af45efb78d25c641bce6166cb52e410, type: 2}
+  - {fileID: 11400000, guid: 1f605cce730df964f9358886d9f3f34a, type: 2}
+  - {fileID: 11400000, guid: f44f52e9020c99c448ba413bd9ee1753, type: 2}
+  - {fileID: 11400000, guid: ffeecf311e5ec75479b2db25f68a3df1, type: 2}
+  _mouthsLibrary:
+  - {fileID: 11400000, guid: 0dce639bb0a505348849bcd923b6e287, type: 2}
+  - {fileID: 11400000, guid: 0aeb77fb3972395449605a5d37d5bfde, type: 2}
+  - {fileID: 11400000, guid: 8bb581406f13aba40975f5f7bd2277bb, type: 2}
+  - {fileID: 11400000, guid: a6b147267a59bab4ca1df5c03229a881, type: 2}
+  - {fileID: 11400000, guid: c2d75090e2113324e961221bf4dde69e, type: 2}
+  - {fileID: 11400000, guid: 7553a36bc6cf5bf418fd7f64e2e449bb, type: 2}

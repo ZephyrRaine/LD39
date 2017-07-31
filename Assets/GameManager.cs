@@ -35,6 +35,15 @@ public class GameManager : MonoBehaviour {
                 break;
 
         }
+        if(_bh != null)
+        {
+            _bh.DailyInit(_sr.GetComponent<Plant>().Evaluate());
+        }
+        else
+        {
+            Debug.LogError("BH NULL");
+        }
+        
     }
 	void Awake()
 	{
@@ -48,6 +57,7 @@ public class GameManager : MonoBehaviour {
     MouthAsset _mouth;
 
     ShapeReceiver _sr;
+    BubblesHandler _bh;
     public void Transitionning(Shape[] shapes, Color color, Part[] parts, MouthAsset mouth)
     {
         _shapes = shapes;
@@ -61,7 +71,7 @@ public class GameManager : MonoBehaviour {
 	{
         _sr = sr;
         _sr.ReceiveShapes(_shapes, _color, _parts, _mouth);
-
+        _bh = _sr.transform.parent.GetComponentInChildren<BubblesHandler>();
     }
 
 	

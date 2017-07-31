@@ -25,7 +25,7 @@ public class ShapeReceiver : MonoBehaviour
         {
             go.SetActive(false);
         }
-
+        GetComponent<Plant>()._currentAge = age;
         _plants[(int)age].SetActive(true);
     }
 
