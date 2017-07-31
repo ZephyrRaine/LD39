@@ -12,6 +12,9 @@ public class LifeCircle : MonoBehaviour {
 
     [SerializeField]
     TextBox tb;
+
+    [SerializeField]
+    BasicChoiceManager bcm;
     // Use this for initialization
     void Start () 
 	{
@@ -23,17 +26,37 @@ public class LifeCircle : MonoBehaviour {
         {
             tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
         }
+        bcm.Input += MadeChoice;
+    }
+
+    public void MadeChoice(int i)
+    {
+        Debug.Log("YOOOO");
+        bcm.ClearChoices();
+        InkOverlord.IO.MakeChoice(i);
+        tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
     }
 
     public void Proceed()
     {
-        if(InkOverlord.IO.canContinue)
+        if (!bcm.IsBusy)
         {
-            tb.ReadLine(0f,1f,InkOverlord.IO.NextLine());
-        }
-        else if(InkOverlord.IO.hasChoices)
-        {
-
+            if (InkOverlord.IO.canContinue)
+            {
+                Debug.Log("CONTINUE");
+                tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
+            }
+            else if (InkOverlord.IO.hasChoices)
+            {
+                Debug.Log("HAS CHOICES");
+                bcm.FeedChoices(InkOverlord.IO.GetChoices());
+                bcm.DisplayChoices();
+            }
+            else
+            {
+                Debug.Log("BYE BYE");
+                tb.transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 

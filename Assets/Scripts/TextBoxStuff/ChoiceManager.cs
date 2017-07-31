@@ -43,10 +43,10 @@ public abstract class ChoiceManager : MonoBehaviour
     }
     public virtual void DisplayChoices()
 	{
-        TextBox [] textBoxes = GetComponentsInChildren<TextBox>();
-		foreach(TextBox ctb in textBoxes)
-		{
-            ctb.ReadLine();
+        foreach(Transform t in transform)
+        {
+            TextBox textBox = GetComponentInChildren<TextBox>();
+            textBox.ReadLine();
         }
     }
 
@@ -62,9 +62,13 @@ public abstract class ChoiceManager : MonoBehaviour
         else
         {
             GameObject go = Instantiate(_textBoxModel, transform.position+(Vector3.down*0.35f*(transform.childCount+1)), transform.rotation, transform);
-            box = go.GetComponent<TextBox>();
+            box = go.transform.GetChild(0).GetComponent<TextBox>();
         }
         box.FeedLine(s);
+        if(box is ClickableTextBox)
+        {
+            (box as ClickableTextBox).Input += Input;
+        }
 
         return box;
     }

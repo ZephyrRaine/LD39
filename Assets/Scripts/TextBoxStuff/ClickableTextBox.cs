@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class ClickableTextBox : TextMeshBox, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class ClickableTextBox : TextBox, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public bool _isAvailable;
     public Color _colorHover;
@@ -17,6 +17,12 @@ public class ClickableTextBox : TextMeshBox, IPointerEnterHandler, IPointerExitH
     public void Start()
     {
         RealStart();
+        base.finishedCallback += MakeAvailable;
+    }
+
+    void MakeAvailable()
+    {
+        _isAvailable = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -42,7 +48,8 @@ public class ClickableTextBox : TextMeshBox, IPointerEnterHandler, IPointerExitH
 
         if(_isAvailable && Input != null)
         {
-            Input(transform.GetSiblingIndex());
+            
+            Input(transform.parent.GetSiblingIndex());
         }
     }
 
