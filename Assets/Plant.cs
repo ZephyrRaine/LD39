@@ -86,7 +86,8 @@ public class Plant : MonoBehaviour {
 	// Update is called once per frame
 	public string[] Evaluate(bool _cleaned, bool _darkness) 
 	{
-
+        check.cleaned = _cleaned;
+        check.darkness = _darkness;
         string knot = "EVIL_HEALTHY";
 
         string[] stitches = new string[(int)DIALOGUE_TYPES.COUNT];

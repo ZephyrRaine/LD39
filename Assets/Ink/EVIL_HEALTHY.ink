@@ -13,7 +13,7 @@
 
 =THIRSTY
 
-{~Give me water.|}
+{~Give me water.}
 
 ->DONE
 

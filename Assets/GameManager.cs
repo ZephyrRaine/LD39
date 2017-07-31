@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
             {
                 if(t.gameObject.activeSelf)
                 {
+                    Debug.Log(t.gameObject.name + " is some active poop");
                     cleaned = false;
                 }
                 else
