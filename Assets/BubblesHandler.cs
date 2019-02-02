@@ -29,9 +29,6 @@ public class BubblesHandler : MonoBehaviour {
 
     [SerializeField]
     TextBox tb;
-    [SerializeField]
-
-    BasicChoiceManager bcm;
 
     string[] knots;
     void DisplayBubble(DIALOGUE_TYPES type)
@@ -42,37 +39,6 @@ public class BubblesHandler : MonoBehaviour {
 	void HideBubble(DIALOGUE_TYPES type)
 	{
         transform.GetChild((int)type).gameObject.SetActive(false);
-    }
-
-    void Start()
-    {
-        tb.transform.parent.gameObject.SetActive(true);
-        InkOverlord.IO.RequestKnot("FRIDAY_NOON");
-        if(InkOverlord.IO.canContinue)
-        {
-            tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
-        }
-        bcm.Input += MadeChoice;
-    }
-
-    int nextDay;
-    bool waitingEndDay = false;
-    void EndOfDay(int i)
-    {
-        tb.transform.parent.gameObject.SetActive(true);
-        nextDay = i;
-        switch(i)
-        {
-            case 2:
-                InkOverlord.IO.RequestKnot("FRIDAY_NIGHT");
-                break;
-        }
-        if(InkOverlord.IO.canContinue)
-        {
-            tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
-        }
-
-        waitingEndDay = true;
     }
 
 	public void DailyInit(string[] _knots)
@@ -103,38 +69,22 @@ public class BubblesHandler : MonoBehaviour {
         HideBubble((DIALOGUE_TYPES)i);
     }
 
-    public void MadeChoice(int i)
-    {
-        Debug.Log("YOOOO");
-        bcm.ClearChoices();
-        InkOverlord.IO.MakeChoice(i);
-        tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
-    }
-
-    public void Proceed()
-    {
-        if (!bcm.IsBusy)
+	public void Proceed()
+	{
+        if (!tb._isReading)
         {
             if (InkOverlord.IO.canContinue)
             {
-                Debug.Log("CONTINUE");
                 tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
-            }
-            else if (InkOverlord.IO.hasChoices)
-            {
-                Debug.Log("HAS CHOICES");
-                bcm.FeedChoices(InkOverlord.IO.GetChoices());
-                bcm.DisplayChoices();
             }
             else
             {
-                Debug.Log("BYE BYE");
                 tb.transform.parent.gameObject.SetActive(false);
-                if(waitingEndDay)
-                {
-                    GameManager.GM.NewDay(nextDay);
-                }
             }
+        }
+		else
+		{
+            tb.DisplayImmediate();
         }
     }
 }

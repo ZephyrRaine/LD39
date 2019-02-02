@@ -47,6 +47,6 @@ public class DayText : MonoBehaviour
 		if(_CurrentDay >= 7)
             _CurrentDay = 0;
 
-        GameManager.GM.TriggerDay(_CurrentDay);
+        GameManager.GM.NewDay(_CurrentDay);
     }
 }

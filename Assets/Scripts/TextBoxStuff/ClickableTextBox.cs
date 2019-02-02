@@ -22,7 +22,6 @@ public class ClickableTextBox : TextBox, IPointerEnterHandler, IPointerExitHandl
 
     void MakeAvailable()
     {
-        Debug.Log("I'M FREE");
         _isAvailable = true;
     }
 

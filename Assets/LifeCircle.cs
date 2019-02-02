@@ -21,7 +21,7 @@ public class LifeCircle : MonoBehaviour {
         selectedParts = new Part[3];
         GetComponent<Mouth>().ReceiverDelegate += GetWord;
         tb.transform.parent.gameObject.SetActive(true);
-        InkOverlord.IO.RequestKnot("FRIDAY_MORNING");
+        InkOverlord.IO.RequestKnot("MONDAY_MORNING");
         if(InkOverlord.IO.canContinue)
         {
             tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
@@ -41,11 +41,7 @@ public class LifeCircle : MonoBehaviour {
     {
         if (!bcm.IsBusy)
         {
-            if(tb._isReading)
-            {
-                tb.DisplayImmediate();
-            }
-            else if (InkOverlord.IO.canContinue)
+            if (InkOverlord.IO.canContinue)
             {
                 Debug.Log("CONTINUE");
                 tb.ReadLine(0f, 1f, InkOverlord.IO.NextLine());
